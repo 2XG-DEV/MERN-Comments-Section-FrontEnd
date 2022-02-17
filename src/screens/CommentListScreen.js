@@ -14,7 +14,7 @@ const CommentListScreen = () => {
   }, [dispatch]);
 
   const commentList = useSelector((state) => state.commentList);
-  const { loading, error, comments } = commentList;
+  const { loading, comments } = commentList;
 
   return (
     <div className="commentList">
