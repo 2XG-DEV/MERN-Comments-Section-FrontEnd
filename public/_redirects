@@ -1,2 +1,0 @@
-/api/comments https://merncomments.herokuapp.com/api/comments
-/api/comments/* https://merncomments.herokuapp.com/api/comments/:id
