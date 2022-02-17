@@ -14,7 +14,9 @@ import {
 export const listComments = () => async (dispatch) => {
   try {
     dispatch({ type: COMMENT_LIST_REQUEST });
-    const { data } = await axios.get("/api/comments");
+    const { data } = await axios.get(
+      "https://merncomments.herokuapp.com/api/comments"
+    );
     dispatch({ type: COMMENT_LIST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -35,13 +37,15 @@ export const postComment = (comment) => async (dispatch) => {
       },
     };
 
-    await axios.post(`/api/comments`, comment, config).then((response) => {
-      console.log(response);
-      dispatch({
-        type: COMMENT_POST,
-        payload: response.data,
+    await axios
+      .post(`https://merncomments.herokuapp.com/api/comments`, comment, config)
+      .then((response) => {
+        console.log(response);
+        dispatch({
+          type: COMMENT_POST,
+          payload: response.data,
+        });
       });
-    });
   } catch (error) {
     const message =
       error.response && error.response.data.message
@@ -63,7 +67,11 @@ export const putComment = (comment) => async (dispatch) => {
     };
 
     await axios
-      .put(`/api/comments/${comment._id}`, comment, config)
+      .put(
+        `https://merncomments.herokuapp.com/api/comments/${comment._id}`,
+        comment,
+        config
+      )
       .then((response) => {
         dispatch({ type: COMMENT_PUT, payload: response.data });
       });
@@ -88,7 +96,10 @@ export const deleteComment = (comment) => async (dispatch) => {
     };
 
     if (comment._id) {
-      await axios.delete(`/api/comments/${comment._id}`, config);
+      await axios.delete(
+        `https://merncomments.herokuapp.com/api/comments/${comment._id}`,
+        config
+      );
     }
 
     dispatch({ type: COMMENT_DELETE, payload: comment });
