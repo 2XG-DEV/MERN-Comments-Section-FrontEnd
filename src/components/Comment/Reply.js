@@ -13,7 +13,8 @@ const Reply = ({ comment, reply }) => {
   const handlePlusReply = async () => {
     const newScore = score + 1;
     comment.replies.map((x) => {
-      if (x._id == reply._id) x.score = newScore;
+      if (x._id === reply._id) x.score = newScore;
+      return 1;
     });
     dispatch(putComment({ ...comment }));
     setScore(newScore);
@@ -22,7 +23,8 @@ const Reply = ({ comment, reply }) => {
   const handleMinusReply = async () => {
     const newScore = score - 1;
     comment.replies.map((x) => {
-      if (x._id == reply._id) x.score = newScore;
+      if (x._id === reply._id) x.score = newScore;
+      return 1;
     });
     dispatch(putComment({ ...comment }));
     setScore(newScore);
@@ -33,7 +35,7 @@ const Reply = ({ comment, reply }) => {
     dispatch(
       putComment({
         ...comment,
-        replies: comment.replies.filter((x) => x._id != reply._id),
+        replies: comment.replies.filter((x) => x._id !== reply._id),
       })
     );
   };
@@ -44,7 +46,7 @@ const Reply = ({ comment, reply }) => {
         <div className="comment__header">
           <img src={reply.user.image} alt="" />
           <p className="comment__username">{reply.user.username}</p>
-          {user.user.username == reply.user.username && <span>you</span>}
+          {user.user.username === reply.user.username && <span>you</span>}
           <p>{moment(reply.createdAt).fromNow()}</p>
         </div>
         <div className="comment__content">

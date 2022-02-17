@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./comment.css";
 import "./replies.css";
 import moment from "moment";
@@ -56,7 +56,7 @@ const Comment = ({ comment }) => {
         <div className="comment__header">
           <img src={comment.user.image} alt="" />
           <p className="comment__username">{comment.user.username}</p>
-          {user.user.username == comment.user.username && <span>you</span>}
+          {user.user.username === comment.user.username && <span>you</span>}
           <p>{moment(comment.createdAt).fromNow()}</p>
         </div>
         <div className="comment__content">
