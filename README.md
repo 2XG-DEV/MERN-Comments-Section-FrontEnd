@@ -39,9 +39,10 @@ When it comes to full stack applications I like to start with the back and work 
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
-- CSS Grid
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
+- Redux
+- Axios
 
 
 ### What I learned
